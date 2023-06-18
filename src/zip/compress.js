@@ -6,7 +6,7 @@ import { createGzip } from "zlib";
 const compress = async () => {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const filePath = path.join(__dirname, "files", "fileToCompress.txt");
-  const archivePath = path.join(__dirname, "files", "fileToCompress.gz");
+  const archivePath = path.join(__dirname, "files", "archive.gz");
   const handleStream = fs.createReadStream(filePath);
   handleStream
     .pipe(createGzip())
