@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const copy = async () => {
   // Write your code here
-  const dirPath = path.join("src", "fs", "files");
-  const dirCopyPath = path.join("src", "fs", "files_copy");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const dirPath = path.join(__dirname, "files");
+  const dirCopyPath = path.join(__dirname, "files_copy");
   fs.access(dirCopyPath, fs.constants.F_OK, (err) => {
     if (err) {
       fs.cp(dirPath, dirCopyPath, { recursive: true }, (err) => {

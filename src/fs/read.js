@@ -1,9 +1,11 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const read = async () => {
   // Write your code here
-  const filePath = path.join("src", "fs", "files", "fileToRead.txt");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const filePath = path.join(__dirname, "files", "fileToRead.txt");
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       throw new Error("FS operation failed");

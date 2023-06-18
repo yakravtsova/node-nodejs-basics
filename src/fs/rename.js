@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const rename = async () => {
   // Write your code here
-  const wrongFilePath = path.join("src", "fs", "files", "wrongFilename.txt");
-  const properFilePath = path.join("src", "fs", "files", "properFilename.md");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const wrongFilePath = path.join(__dirname, "files", "wrongFilename.txt");
+  const properFilePath = path.join(__dirname, "files", "properFilename.md");
   fs.access(wrongFilePath, fs.constants.F_OK, (err) => {
     if (err) {
       throw new Error("FS operation failed");
