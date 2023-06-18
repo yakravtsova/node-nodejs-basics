@@ -1,9 +1,11 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const create = async () => {
   // Write your code here
-  const filePath = path.join("src", "fs", "files", "fresh.txt");
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const filePath = path.join(__dirname, "files", "fresh.txt");
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       fs.appendFile(filePath, "I am fresh and young", (err) => {
