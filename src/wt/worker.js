@@ -1,4 +1,3 @@
-import { isMainThread } from "worker_threads";
 import { parentPort, workerData } from "worker_threads";
 
 // n should be received from main thread
@@ -12,5 +11,4 @@ const sendResult = () => {
   }
   parentPort.postMessage(nthFibonacci(workerData));
 };
-
 sendResult();
