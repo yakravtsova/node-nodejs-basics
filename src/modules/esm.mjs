@@ -3,8 +3,6 @@ import { release, version } from "os";
 //import { createServer, createServerHttp } from "http";
 import { createServer as createServerHttp } from "http";
 import "./files/c.js";
-import a from "./files/a.json" assert { type: "json" };
-import b from "./files/b.json" assert { type: "json" };
 
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -14,9 +12,15 @@ const random = Math.random();
 
 let unknownObject;
 
+console.log("import.meta.url", import.meta.url);
+console.log("__dirname", __dirname);
+console.log("__filename", __filename);
+
 if (random > 0.5) {
+  const a = await import("./files/a.json", { assert: { type: "json" } });
   unknownObject = a;
 } else {
+  const b = await import("./files/b.json", { assert: { type: "json" } });
   unknownObject = b;
 }
 
