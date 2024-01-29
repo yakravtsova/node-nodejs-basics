@@ -29,7 +29,8 @@ const handleWorker = (value) => {
 
 const performCalculations = async () => {
   // Write your code here
-  const workers = Array.from({ length: availableParallelism() }, (_, i) =>
+  const coresNumber = availableParallelism();
+  const workers = Array.from({ length: coresNumber }, (_, i) =>
     handleWorker(INIT_VALUE + i)
   );
   const result = await Promise.all(workers);
